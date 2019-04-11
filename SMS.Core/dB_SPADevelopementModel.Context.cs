@@ -25,23 +25,23 @@ namespace SMS.Core
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Class> Classes { get; set; }
-        public virtual DbSet<ClassTeacherAllocation> ClassTeacherAllocations { get; set; }
-        public virtual DbSet<Section> Sections { get; set; }
-        public virtual DbSet<InstituteDetail> InstituteDetails { get; set; }
-        public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
         public virtual DbSet<AcademicMaster> AcademicMasters { get; set; }
         public virtual DbSet<BloodGroup> BloodGroups { get; set; }
         public virtual DbSet<CasteMaster> CasteMasters { get; set; }
-        public virtual DbSet<GenderMaster> GenderMasters { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<StudentClassMapping> StudentClassMappings { get; set; }
-        public virtual DbSet<StudentMaster> StudentMasters { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<ClassTeacherAllocation> ClassTeacherAllocations { get; set; }
+        public virtual DbSet<DepositThrough> DepositThroughs { get; set; }
         public virtual DbSet<FeeHeadMaster> FeeHeadMasters { get; set; }
+        public virtual DbSet<GenderMaster> GenderMasters { get; set; }
+        public virtual DbSet<InstituteDetail> InstituteDetails { get; set; }
         public virtual DbSet<ReligionMaster> ReligionMasters { get; set; }
+        public virtual DbSet<Section> Sections { get; set; }
+        public virtual DbSet<StudentClassMapping> StudentClassMappings { get; set; }
         public virtual DbSet<StudentFeeAllocationMaster> StudentFeeAllocationMasters { get; set; }
         public virtual DbSet<StudentFeeAllocation> StudentFeeAllocations { get; set; }
-        public virtual DbSet<DepositThrough> DepositThroughs { get; set; }
         public virtual DbSet<StudentFeeDeposit> StudentFeeDeposits { get; set; }
+        public virtual DbSet<StudentMaster> StudentMasters { get; set; }
+        public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
     }
 }

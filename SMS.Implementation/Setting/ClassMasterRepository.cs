@@ -44,6 +44,7 @@ namespace SMS.Implementation.Setting
 
         public string InsertEntity(ClassMasterVm entity)
         {
+            entity.CreatedDate = System.DateTime.Now.Date;
             var result = ConvertSourceToDest<ClassMasterVm,Class>.ConvertSourceToDestination(entity);
             dB_SPADevelopementEntities.Classes.Add(result);
             dB_SPADevelopementEntities.SaveChanges();

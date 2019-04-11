@@ -65,74 +65,74 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcademicMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BloodGroup.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CasteMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Category.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Class.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ClassTeacherAllocation.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dB_SPADevelopementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dB_SPADevelopementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dB_SPADevelopementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dB_SPADevelopementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dB_SPADevelopementModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DepositThrough.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FeeHeadMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GenderMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="InstituteDetail.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReligionMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Section.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPADataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SPADataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPADataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SPADataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPADataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SPADataModel.edmx</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentClassMapping.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentFeeAllocation.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentFeeAllocationMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentFeeDeposit.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SubjectMaster.cs">
-      <DependentUpon>SPADataModel.tt</DependentUpon>
+      <DependentUpon>dB_SPADevelopementModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -149,29 +149,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <EntityDeploy Include="SPADataModel.edmx">
+    <EntityDeploy Include="dB_SPADevelopementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SPADataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>dB_SPADevelopementModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SPADataModel.edmx.diagram">
-      <DependentUpon>SPADataModel.edmx</DependentUpon>
+    <None Include="dB_SPADevelopementModel.edmx.diagram">
+      <DependentUpon>dB_SPADevelopementModel.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SPADataModel.Context.tt">
+    <Content Include="dB_SPADevelopementModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SPADataModel.edmx</DependentUpon>
-      <LastGenOutput>SPADataModel.Context.cs</LastGenOutput>
+      <DependentUpon>dB_SPADevelopementModel.edmx</DependentUpon>
+      <LastGenOutput>dB_SPADevelopementModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="SPADataModel.tt">
+    <Content Include="dB_SPADevelopementModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SPADataModel.edmx</DependentUpon>
-      <LastGenOutput>SPADataModel.cs</LastGenOutput>
+      <DependentUpon>dB_SPADevelopementModel.edmx</DependentUpon>
+      <LastGenOutput>dB_SPADevelopementModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SPADataModel.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
