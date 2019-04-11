@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "FeeHeadIndex";
+    Layout = "~/Views/Shared/_SMSLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+           Fee Head Type Name
+            <small>Fee Head Master</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Create Fee Head Detail</h3>
+                        </div>
+                        <div class="box-body with-border">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-6" id="_divCreateFeeHead">
+
+                                    </div>
+                                    <div class="col-md-6" id="_divFeeHeadList">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </section>
+    <script src="~/Scripts/Custom/Custome.js"></script>
+    
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        createFeeHead();
+        getFeeHeadList();
+    });
+
+    function createFeeHead() {
+        $.get("/FeeHead/CreateFeeHeadType", function (response) {
+            $("#_divCreateFeeHead").html(response);
+        });
+    }
+    function getFeeHeadList() {
+        $.get("/FeeHead/GetFeeHeadTypeList", function (response) {
+            $("#_divFeeHeadList").html(response);
+        });
+    }
+    function HeadTypeComplete() {
+        getFeeHeadList();
+    }
+
+    function EditFeeHead(id) {
+        $.get("/FeeHead/CreateFeeHeadType", { id: id }, function (response) {
+            $("#_divCreateFeeHead").html(response);
+        });
+    }
+    function DeleteFeeHead(id) {
+        $.get("/FeeHead/DeleteHeadType", { id: id }, function (response) {
+            successMessage(response);
+            getFeeHeadList();
+        });
+    }
+</script>
+

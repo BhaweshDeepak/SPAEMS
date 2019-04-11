@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SMS.Contract.Setting.SectionMasterVM>
+
+
+<table class="table table-condensed table-striped table-hover" id="tblSectionMasterList">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </th>
+            <th>
+                Section Name
+            </th>
+            <th>
+                Section Code
+            </th>
+
+            <th> Action Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+
+                <td>
+                    <p data-placement="top" data-toggle="tooltip"  title="Edit"><button class="btn btn-primary btn-xs"  onclick="EditSection(@item.Id)"><span class="glyphicon glyphicon-pencil"></span></button></p>
+                    <p data-placement="top" data-toggle="tooltip" title="Delete"><button  onclick="DeleteSection(@item.Id)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button></p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#tblSectionMasterList").dataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "pagingType": "full_numbers",
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+
+        });
+    });
+
+    function DeleteSection(id) {
+        if (confirm("Are you sure want to delete the data")) {
+            $.get("/SectionMaster/DeleteSection", { sectionId: id }, function (response) {
+                SuccessMessage("Success", response);
+                GetSectionList();
+            });
+        }
+
+    }
+
+    function EditSection(id) {
+        $.get("/SectionMaster/CreateSection", { id: id }, function (response) {
+            $("#_divSectionMaster").html(response);
+        });
+    }
+
+</script>
+

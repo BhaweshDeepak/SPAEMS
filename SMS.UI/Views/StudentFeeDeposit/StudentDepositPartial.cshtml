@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SMS.Contract.StudentFinance.FeeHeadMasterVM>
+<table class="table">
+    <tr>
+        <th>
+           Head Name
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Discount Amount
+        </th>
+        <th>
+           Discount Description
+        </th>
+        <th>
+            Payment For
+        </th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadName)
+            </td>
+            <td>
+
+                <input type="hidden" name="txtFeeHeadId" value="@item.Id" />
+                <input type="number" name="txtAmount" id="txtAmount" value="@item.Amount" class="form-control" />
+            </td>
+            <td>
+                <input type="number" name="txtDiscountAmnt" id="txtAmount" value="@item.DiscountAmount" class="form-control" />
+            </td>
+            <td>
+                <input type="text" name="txtDiscountDescription" id="txtAmount" class="form-control" />
+            </td>
+            <td>
+            </td>
+        </tr>
+    }
+
+</table>

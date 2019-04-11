@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "AcademicList";
+    Layout = "~/Views/Shared/_SMSLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Academic Master Detail
+            <small>Academic master  list</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <section class="content">
+
+            <img src="~/Loading.gif" id="loadingId" style="display:none" />
+
+            <div id="_divAcademicCreate"></div>
+
+        </section>
+    </section>
+    <script src="~/Scripts/Custom/Custome.js"></script>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create Academic Master</h4>
+            </div>
+            <div class="modal-body" id="_divAcademicMaster">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="window.location.reload()" class="btn btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        GetAcademicMasterList();
+    });
+
+
+    function GetAcademicMasterList() {
+        $("#loadingId").show();
+        $.get("/AcademicMaster/GetAcademicMasterList", function (response) {
+            $("#_divAcademicCreate").html(response);
+            $("#loadingId").hide();
+        })
+    }
+
+    function EditAcademic(id) {
+
+    }
+    function AddAcademicMaster() {
+        alert("Add");
+        $.get("/AcademicMaster/CreateAcademicMaster", { id: 0 }, function (response) {
+            $("#_divAcademicMaster").html(response);
+            $("#myModal").modal('show');
+        });
+    }
+    function DeleteAcademic(id) {
+        $.get("/AcademicMaster/DeleteAcademicMaster", { id: id }, function (response) {
+            SuccessMessage("Success", response)
+            setTimeout(function () { GetAcademicMasterList(); }, 3000);
+        });
+    }
+</script>

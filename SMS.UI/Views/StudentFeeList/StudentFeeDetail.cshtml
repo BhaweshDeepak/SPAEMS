@@ -1,0 +1,160 @@
+﻿@model IEnumerable<SMS.Contract.StudentFinance.StudentFeeListVM>
+@{
+    ViewBag.Title = "StudentFeeDetail";
+    Layout = "~/Views/Shared/_SMSLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Academic Master Detail
+            <small>Academic master  list</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <section class="content">
+
+            <img src="~/Loading.gif" id="loadingId" style="display:none" />
+
+            <div>
+
+                <table class="table table-condensed table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Student Information
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                        @foreach(var item in Model.GroupBy(item => item.Id))
+                        {
+                            <tr>
+                                <td>
+                                    <b>Student Name </b>  @item.First().Name       <b>Roll Number :</b>(@item.First().RollNumber) <b>Registration Number :</b>(@item.First().RegistrationNumber)
+                                    <a class="btn btn-info" onclick="ChangeFeeDetail(@item.Key)"> Re allocate Fee</a>
+
+                                    <table class="table table-condensed table-striped table-hover" id="tblStudentFeeList">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Name)
+                                                </th>
+                                                <th>
+                                                    Father Name
+                                                </th>
+                                                <th>
+                                                    Registration Number
+                                                </th>
+                                                <th>
+                                                    Roll Number
+                                                </th>
+                                                <th>
+                                                    Contact Phone
+                                                </th>
+                                                <th>
+                                                    Class Name
+                                                </th>
+                                                <th>
+                                                    Section Name
+                                                </th>
+                                                <th>
+                                                    Head Name
+                                                </th>
+                                                <th>
+                                                    Alloted Amount
+                                                </th>
+                                                <th>
+                                                    Discount Amount
+                                                </th>
+                                                <th>
+                                                    Discount Percentage
+                                                </th>
+                                                <th>
+                                                    Net Fee Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var data in item)
+                                            {
+                                                <tr>
+
+                                                    <td>
+                                                        @data.Name
+                                                    </td>
+                                                    <td>
+                                                        @data.FatherName
+                                                    </td>
+                                                    <td>
+                                                        @data.RegistrationNumber
+                                                    </td>
+                                                    <td>
+                                                        @data.RollNumber
+                                                    </td>
+                                                    <td>
+                                                        @data.ContactPhone
+                                                    </td>
+                                                    <td>
+                                                        @data.ClassName
+                                                    </td>
+                                                    <td>
+                                                        @data.SectionName
+                                                    </td>
+                                                    <td>
+                                                        @data.HeadName
+                                                    </td>
+                                                    <td>
+                                                        @data.AlloatedAmount
+                                                    </td>
+                                                    <td>
+                                                        @data.DiscountAmount
+                                                    </td>
+                                                    <td>@data.DiscountPercenatge</td>
+                                                    <td>
+                                                        @data.NetAmount
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+    </section>
+    <script src="~/Scripts/Custom/Custome.js"></script>
+    <script>
+           $(document).ready(function () {
+                $(".table").dataTable({
+                    "paging": true,
+                    "ordering": true,
+                    "info": true,
+                    "searching": true,
+                    "pagingType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+
+                });
+            });
+
+        function ChangeFeeDetail(id){
+            alert(id);
+        }
+    </script>
+</div>
+

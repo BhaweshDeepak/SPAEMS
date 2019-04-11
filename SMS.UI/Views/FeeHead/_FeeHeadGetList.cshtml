@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SMS.Contract.StudentFinance.FeeHeadMasterVM>
+
+<table class="table table-condensed table-striped table-hover" id="tblHeadType">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadName)
+                </td>
+
+                <td>
+                    <button class="btn btn-primary btn-xs" onclick="EditFeeHead(@item.Id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button onclick="DeleteFeeHead(@item.Id)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+        $(document).ready(function () {
+        $("#tblHeadType").dataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "pagingType": "full_numbers",
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+           
+        });
+    });
+  
+</script>

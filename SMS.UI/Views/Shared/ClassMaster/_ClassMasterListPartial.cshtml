@@ -1,0 +1,90 @@
+﻿@model IEnumerable<SMS.Contract.Setting.ClassMasterVm>
+@using SMS.UI.ExtensionAndHelpers
+
+<div class="col-md-12">
+    <table class="table table-condensed table-striped table-hover" id="tblClassMaster">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+
+                    </td>
+                    <td>
+                        <button class="btn btn-primary a-btn-slide-text" onclick="EditClass(@item.Id)">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <span><strong>Edit</strong></span>
+                        </button>
+                        <button class="btn btn-primary a-btn-slide-text" onclick="DeleteCLass(@item.Id)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span><strong>Delete</strong></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    function EditClass(id) {
+        $("#loadingImage").show();
+        $.get("/ClassMaster/ClassEdit", { Id: id }, function (response) {
+            $("#_divClassCreation").html(response);
+            $("#loadingImage").hide();
+        })
+    }
+    function DeleteCLass(id) {
+        if (confirm("Are you sure want to delete the class ?")) {
+            $.get("/ClassMaster/DeleteClassId", { Id: id }, function (response) {
+                SuccessMessage("Success", "Class Deleted successFully");
+                GetClassMasterList();
+                $("#loadingImage").hide();
+            });
+        }
+    }
+    function AddClassMaster() {
+        $.get("/ClassMaster/ClassEdit", { Id: 0 }, function (response) {
+            $("#_divClassCreation").html(response);
+            GetClassMasterList();
+            $("#loadingImage").hide();
+        })
+    }
+
+    $(document).ready(function () {
+        $("#tblClassMaster").dataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "pagingType": "full_numbers",
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+           
+        });
+    });
+
+    $(window).load(function () {
+        alert("loaing ....");
+    });
+
+</script>

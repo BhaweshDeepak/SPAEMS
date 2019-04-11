@@ -1,0 +1,53 @@
+﻿@model SMS.Contract.Setting.CategoryMasterVM
+@{
+    ViewBag.Title = "CreateCategory";
+    Layout = "~/Views/Shared/_SMSLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Category Master Detail
+            <small>Create Category Master Detail</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Create Category Master Detail</h3>
+                        </div>
+                        @using(Html.BeginForm())
+                        {
+                            <div class="box-body">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">Category Name</label>
+                                    @Html.TextBoxFor(model => model.Name,new { @class = "form-control",placeholder = "Enter Category name" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <input type="submit" class="btn btn-primary" value="Save" />
+                                <input type="button" onclick="window.location.href='/CategoryMaster/CreateCategory'" class="btn btn-danger" value="Cancel" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.Action("GetCategoryList","CategoryMaster",null)
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="~/Scripts/Custom/Custome.js"></script>
+</div>
+

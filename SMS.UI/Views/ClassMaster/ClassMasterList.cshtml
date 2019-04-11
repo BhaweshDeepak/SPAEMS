@@ -1,0 +1,74 @@
+﻿
+
+@{
+    ViewBag.Title = "ClassMasterList";
+    Layout = "~/Views/Shared/_SMSLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            @ViewHeaderName.ClassHeaderName
+            <small>@ViewHeaderName.ClassHeaderDetail</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">@ViewHeaderName.ClassHeaderDetail</h3>
+                            <button onclick="AddClassMaster()" class="btn btn-primary a-btn-slide-text pull-right">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                <span><strong>Add</strong></span>
+                            </button>
+                        </div>
+                        <div class="box-body with-border">
+                            <div id="_divClassMasterList" class="col-md-6">
+                                <img src="~/Loading.gif" class="loading-image" style="display:none;" id="loadingImage" />
+                            </div>
+                            <div class="col-md-6" id="_divClassCreation">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="~/Scripts/Custom/Custome.js"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function () {
+            GetClassMasterList();
+        })
+        function GetClassMasterList() {
+            $.get("/ClassMaster/GetClassMasterList", function (response) {
+                $("#_divClassMasterList").html(response);
+            })
+        }
+
+        $(function () {
+            var loading = $("#loadingImage");
+            $(document).ajaxStart(function () {
+                loading.show();
+            });
+
+            $(document).ajaxStop(function () {
+                loading.hide();
+            });
+        });
+    </script>
+    
+</div>
+

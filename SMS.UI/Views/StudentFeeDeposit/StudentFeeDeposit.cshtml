@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "StudentFeeDeposit";
+    Layout = "~/Views/Shared/_SMSLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Fee Deposit
+            <small>Student Fee Deposit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Select Student</h3>
+                            <input type="button" class="btn btn-primary pull-right" value="Get Student List" onclick="GetStudentList()" />
+                        </div>
+                        <div class="box-body with-border">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <table class="table table-responsive table-bordered">
+                                        <tr>
+                                            <td>
+                                                <b>Student Name</b>
+                                            </td>
+                                            <td>
+                                                <input id="lblStudentName" readonly />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Father Name</b>
+                                            </td>
+                                            <td>
+                                                <input id="lblFatherName" readonly />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <b>Registration Number</b>
+                                            </td>
+                                            <td>
+                                                <input id="lblRegistration" readonly />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <b>Roll Number</b>
+                                            </td>
+                                            <td>
+                                                <input id="lblRollNumber" readonly />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Class Name</b>
+                                            </td>
+                                            <td>
+                                                <input id="lblClassName" readonly />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Section Name</b>
+                                            </td>
+                                            <td>
+                                                <input id="lblSectionName"readonly />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-8" id="_divStudentFeeDepositSummary">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" id="_divFeeDeposit">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </section>
+    <script src="~/Scripts/Custom/Custome.js"></script>
+</div>
+
+
+<div id="StdListModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Student Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12" id="divStudentList">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function GetStudentList(){
+        $.get("/StudentFeeDeposit/GetStudentList",{studentId:0}, function(data){
+            $("#divStudentList").html(data);
+            $("#StdListModal").modal('show');
+         });
+    }
+
+    function FeeDetail(event) {
+        $.get("/StudentFeeDeposit/GetStudentInformationById", { studentId: event }, function (data) {
+            debugger;
+            $("#lblStudentName").val(data[0].StudentName); $("#lblFatherName").val(data[0].FatherName);
+            $("#lblRegistration").val(data[0].RegistrationNumber); $("#lblRollNumber").val(data[0].RollNumber);
+            $("#lblClassName").val(data[0].ClassName); $("#lblSectionName").val(data[0].SectionName);
+        });
+
+
+        $.get("/StudentFeeDeposit/GetStudentFeeDepositDetail", { studentId: event }, function (data) {
+            $("#_divStudentFeeDepositSummary").html(data);
+        })
+
+        $.get("/StudentFeeDeposit/StudentDepositPartial", function (data) {
+            $("#_divFeeDeposit").html(data);
+        })
+    }
+</script>
+
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SMS.Contract.StudentFinance.StudentFeeDeposit.StudentFeeSummaryDetail>
+
+
+<table class="table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                Head Name
+            </th>
+        
+            <th>
+                Amount
+            </th>
+            <th>
+                Net Amount
+            </th>
+            <th>
+                Payment Type
+            </th>
+            <th>
+                Amount Deposited
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.HeadName
+                </td>
+          
+                <td>
+                    @item.AllotedAmount
+                </td>
+                <td>
+                    @item.NetFeeAmount
+                </td>
+                <td>
+                    @item.FeePaymentType
+                </td>
+                <td>
+                    @item.AmountDeposited
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>

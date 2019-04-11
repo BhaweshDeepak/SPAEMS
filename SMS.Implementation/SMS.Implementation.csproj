@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{117FA1BD-FD0B-4C59-B49F-271683819F68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMS.Implementation</RootNamespace>
+    <AssemblyName>SMS.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comman\CalcullateNetAmount.cs" />
+    <Compile Include="Comman\ConvertListSourceToDestination.cs" />
+    <Compile Include="Comman\ConvertSourceToDest.cs" />
+    <Compile Include="Comman\FeeAmountBasedOnPaymentType.cs" />
+    <Compile Include="Comman\SqlConstant.cs" />
+    <Compile Include="Comman\SqlHelper.cs" />
+    <Compile Include="Comman\StringExtension.cs" />
+    <Compile Include="Comman\StringToDynamicType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setting\AcademicRepository.cs" />
+    <Compile Include="Setting\BloodGroupRepository.cs" />
+    <Compile Include="Setting\CasteRepository.cs" />
+    <Compile Include="Setting\CategoryMasterRepository.cs" />
+    <Compile Include="Setting\ClassMasterRepository.cs" />
+    <Compile Include="Setting\GenderMasterRepository.cs" />
+    <Compile Include="Setting\InstituteRepository.cs" />
+    <Compile Include="Setting\ReligionMasterVMRepository.cs" />
+    <Compile Include="Setting\SectionMasterRepository.cs" />
+    <Compile Include="StudentFinance\FeeAllocationRepository.cs" />
+    <Compile Include="StudentFinance\FeeHeadTypeRepository.cs" />
+    <Compile Include="StudentFinance\StudentFeeAllocationRepository.cs" />
+    <Compile Include="StudentFinance\StudentFeeDepositRepository.cs" />
+    <Compile Include="StudentMaster\StudentMasterRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.Contract\SMS.Contract.csproj">
+      <Project>{5475f93e-245e-4131-8864-817bf565675b}</Project>
+      <Name>SMS.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMS.Core\SMS.Core.csproj">
+      <Project>{73473354-725A-4801-86E4-0345CC968309}</Project>
+      <Name>SMS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMS.Repository\SMS.Repository.csproj">
+      <Project>{2e560c09-f477-4126-a764-26312318f793}</Project>
+      <Name>SMS.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

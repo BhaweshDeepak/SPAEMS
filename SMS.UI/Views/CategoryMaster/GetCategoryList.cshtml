@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SMS.Contract.Setting.CategoryMasterVM>
+
+@{
+    Layout = null;
+}
+
+<table class="table table-condensed table-striped table-hover" id="tblcategoryList">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+
+        @foreach(var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    <button class="btn btn-primary btn-xs" onclick="EditCategory(@item.Id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-danger btn-xs" onclick="DeleteCategory(@item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#tblcategoryList").dataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "pagingType": "full_numbers",
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+
+        });
+    });
+    function EditCategory(id) {
+        window.location.href = "/CategoryMaster/CreateCategory?id=" + id;
+    }
+
+    function DeleteCategory(id) {
+        DeleteCategory(id);
+        setTimeout(function () {
+            window.location.reload();
+        }, 3000);
+    }
+    function DeleteCategory(id) {
+        if (confirm("Are you sure want to delete category ?")) {
+            $.get("/CategoryMaster/DeleteCategory", { id: id }, function (response) {
+                successMessage(response);
+            });
+        }
+    }
+</script>
